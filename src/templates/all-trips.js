@@ -13,7 +13,7 @@ export default ({ pageContext: { allTripData } }) => {
       <ul>
       {allTripData.map(trip => (
         <li key={trip.ID}>
-          <Link to={`/${trip.slug}`}>
+          <Link to={`/all-trips/${trip.slug}`}>
             {trip.name}
           </Link>
         </li>

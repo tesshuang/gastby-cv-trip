@@ -21,11 +21,11 @@ exports.createPages = async ({ actions: { createPage } }) => {
     }
   })
 
-  // allTripData.forEach(trip => {
-  //   createPage({
-  //     path: `/trip/${trip.name}/`,
-  //     component: require.resolve('./src/templates/trip.js'),
-  //     context: { trip }
-  //   });
-  // })
+  allTripData.forEach(trip => {
+    createPage({
+      path: `/all-trips/${trip.slug}/`,
+      component: require.resolve('./src/templates/trip.js'),
+      context: { trip }
+    });
+  })
 }

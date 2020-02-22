@@ -58,7 +58,7 @@ const Header = ({ siteTitle }) => (
         <li style={{
           margin: '1rem'
         }}>
-          <Link to="/trips"
+          <Link to="/all-trips"
           style={{
             color: `white`,
             textDecoration: `none`,

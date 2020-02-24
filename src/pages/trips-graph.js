@@ -6,7 +6,7 @@ import SEO from '../components/seo'
 
 export default ({ data }) => {
   console.log(data);
-  const trips = data.allInternalTrips.edges.filter(trip => trip.node.slug !== null );
+  const trips = data.allInternalTrips.edges;
   const showTrips = trips.map(trip => (
     <li key={trip.node.id}>
       <Link to={`/trips-graph/${trip.node.slug}`}>
@@ -28,7 +28,7 @@ export default ({ data }) => {
 
 export const query = graphql`
   query MyQuery {
-    allInternalTrips {
+    allInternalTrips(filter: {slug: {ne: null}}) {
       edges {
         node {
           slug

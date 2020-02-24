@@ -1,3 +1,4 @@
+// Fetching data without GraphQL -- unstructured data
 const axios = require('axios');
 
 const getAllTrips = async() => {
@@ -10,7 +11,7 @@ const getAllTrips = async() => {
   }
 }
 
-exports.createPages = async ({ actions: { createPage } }) => {
+exports.createPages = async ({ actions: { createPage }, graphql }) => {
   const allTripData = await getAllTrips();
 
   createPage({
@@ -28,4 +29,31 @@ exports.createPages = async ({ actions: { createPage } }) => {
       context: { trip }
     });
   })
+  
+  // Fetching Data with GraphQL Layer
+  const tripResult = await graphql(
+    `
+    {
+      allInternalTrips(filter: {slug: {ne: null}}) {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
+    }
+    `
+  )
+  if (tripResult.errors) {
+    return
+  }
+  tripResult.data.allInternalTrips.edges.map((trip) => {
+    const tripPath = trip.node.slug
+    createPage({
+      path: `/trips-graph/${tripPath}`,
+      component: require.resolve('./src/templates/trip-graph.js'),
+      context: { tripPath }
+    })
+  })
+  // console.log(tripResult);
 }

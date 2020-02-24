@@ -27,6 +27,28 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: `gatsby-source-apiserver`,
+      options: {
+        typePrefix: "internal__",
+        url: `https://uat1.canadavacations.com/wp-json/wp/v2/trips-archive/`,
+        method: `get`,
+        headers: {
+          "Content-Type": "application/json"
+        },
+        name: `trips`,
+        entitiesArray: [
+          {
+            url: `https://uat1.canadavacations.com/wp-json/wp/v2/trips-archive/`,
+            method: "get",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            name: `trips`
+          }
+        ]
+      }
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

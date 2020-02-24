@@ -17,7 +17,7 @@ export default ({ data }) => {
   return (
     <Layout>
       <SEO title="All trip data from API plugin" />
-      <h1>All Trip Data</h1>
+      <h1>All Trip Data from GraphQL </h1>
       <ul>
         {showTrips}   
       </ul>
@@ -27,7 +27,7 @@ export default ({ data }) => {
 }
 
 export const query = graphql`
-  query MyQuery {
+  query TripsQuery {
     allInternalTrips(filter: {slug: {ne: null}}) {
       edges {
         node {

@@ -57,3 +57,43 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
   })
   // console.log(tripResult);
 }
+
+// Process External Images
+const { createRemoteFileNode } = require("gatsby-source-filesystem")
+
+// exports.onCreateNode = async ({
+//   node,
+//   actions: { createNode },
+// }) => {
+//   console.log(node.internal.type);
+// }
+
+exports.createResolvers = ({
+  actions,
+  cache,
+  createNodeId,
+  createResolvers,
+  store,
+  reporter,
+}) => {
+  const { createNode } = actions
+  
+  createResolvers({
+    internal__trips: {
+      imageFile: {
+        type: `File`,
+        resolve(source, args, context, info) {
+          // console.log(source);
+          return createRemoteFileNode({
+            url: source.hero_img_url,
+            store,
+            cache,
+            createNode,
+            createNodeId,
+            reporter,
+          })
+        },
+      },
+    },
+  })
+}

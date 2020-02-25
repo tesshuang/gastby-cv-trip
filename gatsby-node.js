@@ -61,13 +61,6 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
 // Process External Images
 const { createRemoteFileNode } = require("gatsby-source-filesystem")
 
-// exports.onCreateNode = async ({
-//   node,
-//   actions: { createNode },
-// }) => {
-//   console.log(node.internal.type);
-// }
-
 exports.createResolvers = ({
   actions,
   cache,

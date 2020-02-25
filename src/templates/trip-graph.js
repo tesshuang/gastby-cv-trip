@@ -5,7 +5,7 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 
 export default ({ data }) => {
-  // console.log(data);
+  console.log(data);
   const trip = data.internalTrips;
   return (
     <Layout>
@@ -24,6 +24,13 @@ export const query = graphql`
       duration
       hero_img_url
       slug
+      imageFile {
+      childImageSharp {
+        fixed(width: 300) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
     }
   }
 `

@@ -15,7 +15,7 @@ ImageAPI.PropTypes = {
     alt: PropTypes.string,
     childImageSharp: PropTypes.object,
     image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
-  })
+  }).isRequired,
 }
 
 export default ImageAPI

@@ -66,6 +66,17 @@ const Header = ({ siteTitle }) => (
             Trips
           </Link>
         </li>
+        <li style={{
+          margin: '1rem'
+        }}>
+          <Link to="/trips-graph"
+          style={{
+            color: `white`,
+            textDecoration: `none`,
+          }}>
+            Trips from GraphQL
+          </Link>
+        </li>
       </ul>
     </div>
   </header>

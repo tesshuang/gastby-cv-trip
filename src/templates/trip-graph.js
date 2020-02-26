@@ -28,7 +28,7 @@ export default ({ data }) => {
     <Layout>
       <SEO title={trip.name}/>
       <div style={wrapperStyle}>
-        <h2 style={textStyle}>{trip.name}</h2>
+        <h2 style={textStyle}>{trip.name.indexOf('&amp;') ? trip.name.replace(/&amp;/gi, '&') : trip.name }</h2>
         <ImageAPI 
           imageInfo={{
             image: trip.imageFile,

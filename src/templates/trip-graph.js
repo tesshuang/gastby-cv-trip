@@ -49,12 +49,12 @@ export const query = graphql`
       hero_img_url
       slug
       imageFile {
-      childImageSharp {
-        fluid(maxWidth: 640) {
-          ...GatsbyImageSharpFluid
+        childImageSharp {
+          fluid(maxWidth: 640) {
+            ...GatsbyImageSharpFluid
+          }
         }
       }
-    }
     }
   }
 `

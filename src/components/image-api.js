@@ -4,19 +4,16 @@ import Img from 'gatsby-image'
 
 const ImageAPI = ({ imageInfo }) => {
   console.log(imageInfo);
-  const { alt = '', childImageSharp, image } = imageInfo
+  const image = imageInfo.image
+  console.log(imageInfo.alt);
   if (!!image && !!image.childImageSharp) {
     return (
-      <Img fluid={image.childImageSharp.fluid} alt={alt} />
+      <Img fluid={image.childImageSharp.fluid} alt={imageInfo.alt} />
     )
   }
 
-  if (!!childImageSharp) {
-    return <Img fluid={childImageSharp.fluid} alt={alt} />
-  }
-
   if (!!image && typeof image === 'string')
-    return <img src={image} alt={alt} />
+    return <img src={image} alt={imageInfo.alt} />
 
   return null
 }
@@ -26,7 +23,7 @@ ImageAPI.propTypes = {
     alt: PropTypes.string,
     childImageSharp: PropTypes.object,
     image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
-  }).isRequired,
+  })
 }
 
 export default ImageAPI

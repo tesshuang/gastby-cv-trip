@@ -52,7 +52,9 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
     createPage({
       path: `/trips-graph/${tripPath}`,
       component: require.resolve('./src/templates/trip-graph.js'),
-      context: { tripPath }
+      context: {
+        slug: tripPath
+      }
     })
   })
   // console.log(tripResult);

@@ -5,20 +5,37 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 import ImageAPI from '../components/image-api'
 
+const wrapperStyle = {
+  position: 'relative',
+}
+const textStyle = {
+  position: 'absolute',
+  zIndex: 99,
+  color: 'white',
+  width: '100%',
+  height: '100%',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  fontWeight: 700,
+  fontSize: '2.5rem',
+}
+
 export default ({ data }) => {
   console.log(data);
   const trip = data.internalTrips;
   return (
     <Layout>
-      <SEO title="" />
-      <h1>Hi from Trip Graph Template Page</h1>
-      <h2>{trip.name}</h2>
-      <ImageAPI 
-        imageInfo={{
-          image: trip.imageFile,
-          alt: `Feature image for ${trip.name}`,
-        }}
-      />
+      <SEO title={trip.name}/>
+      <div style={wrapperStyle}>
+        <h2 style={textStyle}>{trip.name}</h2>
+        <ImageAPI 
+          imageInfo={{
+            image: trip.imageFile,
+            alt: `Feature image for ${trip.name}`,
+          }}
+        />
+      </div>
       <p>Duration: {trip.duration} days</p>
     </Layout>
   )

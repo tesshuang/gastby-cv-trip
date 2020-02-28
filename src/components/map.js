@@ -1,5 +1,5 @@
 import React from 'react'
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
+import { Map, TileLayer, Marker, Popup, Tooltip } from 'react-leaflet'
 
 export default class MyMap extends React.Component {
   state = {
@@ -59,7 +59,7 @@ export default class MyMap extends React.Component {
           />
           {this.state.locations.map(location => (
             <Marker position={[location.lat, location.lng]} key={location.city} ref={this.initMarker}>
-              <Popup >
+              <Popup autoClose={false}>
                 {location.city}
               </Popup>
             </Marker>

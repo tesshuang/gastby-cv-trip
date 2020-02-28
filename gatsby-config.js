@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -53,6 +57,32 @@ module.exports = {
       resolve: 'gatsby-plugin-react-leaflet',
       options: {
         linkStyles: true // (default: true) Enable/disable loading stylesheets via CDN
+      }
+    },
+    {
+      resolve: `gatsby-source-apiserver`,
+      options: {
+        typePrefix: "BMS__",
+        url: `https://api.bms.staging.freshtracks.com/v1/trips/`,
+        method: `get`,
+        headers: {
+          "Content-Type": "application/json"
+        },
+        name: `BMStrips`,
+        auth: {
+          username: process.env.API_USER,
+          password: process.env.API_PASS
+        },
+        entitiesArray: [
+          {
+            url: `https://uat1.canadavacations.com/wp-json/wp/v2/trips-archive/`,
+            method: "get",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            name: `trips`
+          }
+        ]
       }
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

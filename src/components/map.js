@@ -37,6 +37,12 @@ export default class MyMap extends React.Component {
     ],
     zoom: 6,
   }
+
+  initMarker = ref => {
+    if (ref) {
+      ref.leafletElement.openPopup()
+    }
+  }
   render() {
     // const { options } = this.props
     const centerlat = (Math.max(...this.state.locations.map(e => e.lat)) + Math.min(...this.state.locations.map(e => e.lat)))/2 ;
@@ -52,8 +58,8 @@ export default class MyMap extends React.Component {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           {this.state.locations.map(location => (
-            <Marker position={[location.lat, location.lng]} key={location.city}>
-              <Popup>
+            <Marker position={[location.lat, location.lng]} key={location.city} ref={this.initMarker}>
+              <Popup >
                 {location.city}
               </Popup>
             </Marker>

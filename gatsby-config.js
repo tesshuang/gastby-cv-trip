@@ -41,16 +41,6 @@ module.exports = {
           "Content-Type": "application/json"
         },
         name: `trips`,
-        entitiesArray: [
-          {
-            url: `https://uat1.canadavacations.com/wp-json/wp/v2/trips-archive/`,
-            method: "get",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            name: `trips`
-          }
-        ]
       }
     },
     {
@@ -68,21 +58,18 @@ module.exports = {
         headers: {
           "Content-Type": "application/json"
         },
-        name: `BMStrips`,
-        auth: {
-          username: process.env.API_USER,
-          password: process.env.API_PASS
+        name: `trips`,
+        auth0Config: {
+          method: "POST",
+          url: "https://api.bms.staging.freshtracks.com/users/sign_in",
+          headers: { "content-type": "application/json" },
+          data: {
+            grant_type: "password",
+            username: "Ftc website",
+            password: "Travel2001",
+          },
+          json: true
         },
-        entitiesArray: [
-          {
-            url: `https://uat1.canadavacations.com/wp-json/wp/v2/trips-archive/`,
-            method: "get",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            name: `trips`
-          }
-        ]
       }
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

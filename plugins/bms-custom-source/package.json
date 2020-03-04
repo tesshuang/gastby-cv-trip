@@ -1,0 +1,14 @@
+{
+  "name": "bms-custom-source",
+  "description": "Gatsby plugin to handle custom API from BMS.",
+  "main": "index.js",
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-source-plugin"
+  ],
+  "author" : "Tess Huang",
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  }
+}

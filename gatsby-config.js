@@ -49,29 +49,6 @@ module.exports = {
         linkStyles: true // (default: true) Enable/disable loading stylesheets via CDN
       }
     },
-    {
-      resolve: `gatsby-source-apiserver`,
-      options: {
-        typePrefix: "BMS__",
-        url: `https://api.bms.staging.freshtracks.com/v1/trips/`,
-        method: `get`,
-        headers: {
-          "Content-Type": "application/json"
-        },
-        name: `trips`,
-        auth0Config: {
-          method: "POST",
-          url: "https://api.bms.staging.freshtracks.com/users/sign_in",
-          headers: { "content-type": "application/json" },
-          data: {
-            grant_type: "password",
-            username: "Ftc website",
-            password: "Travel2001",
-          },
-          json: true
-        },
-      }
-    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

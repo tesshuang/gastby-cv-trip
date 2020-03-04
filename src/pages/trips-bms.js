@@ -1,0 +1,39 @@
+import React from 'react'
+import { Link, graphql } from 'gatsby'
+
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+
+const TripBMS = ({ data }) => {
+  console.log(data);
+  const BMSTrips = data.allBmsTrip.edges;
+  return (
+    <Layout>
+      <SEO title="Trip from BMS" />
+      <h1>Hi From the BMS Trip page</h1>
+      <ul>
+        {BMSTrips.map(trip => (
+          <li key={trip.node.id}>
+            {trip.node.name}
+          </li>
+        ))}
+      </ul>
+      
+    </Layout>
+  )
+}
+
+export const query = graphql`
+  query BMSQuery {
+    allBmsTrip {
+      edges {
+        node {
+          id
+          name
+        }
+      }
+    }
+  }
+`
+
+export default TripBMS;

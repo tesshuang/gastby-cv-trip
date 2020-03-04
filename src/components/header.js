@@ -36,24 +36,13 @@ const Header = ({ siteTitle }) => (
         <li style={{
           margin: '1rem'
         }}>
-          <Link to="/"
+          <Link to="/about"
             style={{
               color: `white`,
               textDecoration: `none`,
               }}>
-              Home
+              About
             </Link>
-        </li>
-        <li style={{
-          margin: '1rem'
-        }}>
-          <Link to="/about"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}>
-            About
-          </Link>
         </li>
         <li style={{
           margin: '1rem'
@@ -75,6 +64,17 @@ const Header = ({ siteTitle }) => (
             textDecoration: `none`,
           }}>
             Trips from GraphQL
+          </Link>
+        </li>
+        <li style={{
+          margin: '1rem'
+        }}>
+          <Link to="/trips-bms"
+          style={{
+            color: `white`,
+            textDecoration: `none`,
+          }}>
+            Trips from BMS
           </Link>
         </li>
       </ul>

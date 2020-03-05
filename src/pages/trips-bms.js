@@ -14,7 +14,9 @@ const TripBMS = ({ data }) => {
       <ul>
         {BMSTrips.map(trip => (
           <li key={trip.node.id}>
-            {trip.node.name}
+            <Link to={`/trips-bms/${trip.node.code}`}>
+              {trip.node.name}
+            </Link>
           </li>
         ))}
       </ul>
@@ -30,6 +32,7 @@ export const query = graphql`
         node {
           id
           name
+          code
         }
       }
     }

@@ -58,6 +58,36 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
     })
   })
   // console.log(tripResult);
+
+  // Fetch Data from the Custom plugin - BMS 
+  const BMSTripData = await graphql(
+    `
+      {
+        allBmsTrip {
+          edges {
+            node {
+              code
+            }
+          }
+        }
+      }
+    `
+  )
+  if (BMSTripData.errors) {
+    return
+  }
+  // console.log(BMSTripData);
+  BMSTripData.data.allBmsTrip.edges.map(BMSTrip => {
+    const slug = BMSTrip.node.code;
+
+    createPage({
+      path: `/trip-bms/${slug}`,
+      component: require.resolve('./src/templates/trip-bms'),
+      context: {
+        slug
+      }
+    })
+  })
 }
 
 // Process External Images

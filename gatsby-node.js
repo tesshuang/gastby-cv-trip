@@ -81,7 +81,7 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
     const slug = BMSTrip.node.code;
 
     createPage({
-      path: `/trip-bms/${slug}`,
+      path: `/trips-bms/${slug}`,
       component: require.resolve('./src/templates/trip-bms'),
       context: {
         slug
